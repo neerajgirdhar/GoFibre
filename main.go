@@ -12,12 +12,12 @@ func main() {
     app := fiber.New()
 
     // Initialize repository, service, and handler
-    userRepo := repositories.NewUserRepository()
-    userService := services.NewUserService(userRepo)
-    userHandler := handlers.NewUserHandler(userService)
+    bookRepo := repositories.NewBookRepository()
+    bookService := services.NewBookService(bookRepo)
+    bookHandler := handlers.NewBookHandler(bookService)
 
     // Setup routes
-    routes.UserRoutes(app, userHandler)
+    routes.BookRoutes(app, bookHandler)
 
     // Start the server
     app.Listen(":3000")

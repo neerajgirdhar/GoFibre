@@ -6,24 +6,24 @@ import (
     "fibre-api/services"
 )
 
-type UserHandler struct {
-    Service services.UserService
+type BookHandler struct {
+    Service services.BookService
 }
 
-func NewUserHandler(service services.UserService) *UserHandler {
-    return &UserHandler{Service: service}
+func NewBookHandler(service services.BookService) *BookHandler {
+    return &BookHandler{Service: service}
 }
 
-func (h *UserHandler) GetAllUsers(c *fiber.Ctx) error {
-    users := h.Service.GetAllUsers()
-    return c.JSON(users)
+func (h *BookHandler) GetAllBooks(c *fiber.Ctx) error {
+    books := h.Service.GetAllBooks()
+    return c.JSON(books)
 }
 
-func (h *UserHandler) CreateUser(c *fiber.Ctx) error {
-    var user models.User
-    if err := c.BodyParser(&user); err != nil {
+func (h BookHandler) CreateBooks(c *fiber.Ctx) error {
+    var book models.Books
+    if err := c.BodyParser(&book); err != nil {
         return c.Status(fiber.StatusBadRequest).SendString("Invalid request")
     }
-    createdUser := h.Service.CreateUser(user)
-    return c.Status(fiber.StatusCreated).JSON(createdUser)
+    createdbook := h.Service.CreateBook(book)
+    return c.Status(fiber.StatusCreated).JSON(createdbook)
 }

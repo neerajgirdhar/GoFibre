@@ -5,23 +5,23 @@ import (
     "fibre-api/repositories"
 )
 
-type UserService interface {
-    GetAllUsers() []models.User
-    CreateUser(user models.User) models.User
+type BookService interface {
+    GetAllBooks() []models.Books
+    CreateBook(books models.Books) models.Books
 }
 
-type userService struct {
-    repo repositories.UserRepository
+type bookService struct {
+    repo repositories.BooksRepository
 }
 
-func NewUserService(repo repositories.UserRepository) UserService {
-    return &userService{repo: repo}
+func NewBookService(repo repositories.BooksRepository) BookService {
+    return &bookService{repo: repo}
 }
 
-func (s *userService) GetAllUsers() []models.User {
-    return s.repo.GetAllUsers()
+func (s *bookService) GetAllBooks() []models.Books {
+    return s.repo.GetAllBooks()
 }
 
-func (s *userService) CreateUser(user models.User) models.User {
-    return s.repo.CreateUser(user)
+func (s *bookService) CreateBook(books models.Books) models.Books {
+    return s.repo.CreateBook(books)
 }

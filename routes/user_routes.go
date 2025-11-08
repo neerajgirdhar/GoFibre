@@ -5,7 +5,7 @@ import (
     "fibre-api/handlers"
 )
 
-func UserRoutes(app *fiber.App, handler *handlers.UserHandler) {
-    app.Get("/users", handler.GetAllUsers)
-    app.Post("/users", handler.CreateUser)
+func BookRoutes(app *fiber.App, handler *handlers.BookHandler) {
+    app.Get("/books", handler.GetAllBooks)
+    app.Post("/books", handler.CreateBooks)
 }
